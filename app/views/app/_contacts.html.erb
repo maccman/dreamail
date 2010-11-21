@@ -1,0 +1,31 @@
+<div class="sidebar">
+  <div class="search">
+    <input type="search" placeholder="Search" results="0" incremental="true" data-name="search" autofocus>
+  </div>
+  
+  <div data-name="list" class="list">
+    <div class="item">
+      <%= image_tag "missing.png" %>
+      <div>
+        <span>${fullName()}</span>
+        <span class="cta">&gt;</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="vdivide"></div>
+
+<div class="main">
+  <ul class="options">
+    <li data-name="delete">Delete contact</li>
+    <li data-name="vcard">Export as VCard</li>
+    <li data-name="email">Email contact</li>
+  </ul>
+  
+  <div data-name="selected" class="contact">  
+    <span>${first_name}</span>
+    <span>${last_name}</span>
+    <span>${email}</span>
+  </div>
+</div>

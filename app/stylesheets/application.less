@@ -1,0 +1,105 @@
+@import "utils";
+@import "jquery.ui.css";
+@import "theme";
+
+body {
+  background: #D2D2D2;
+  -webkit-font-smoothing: antialiased;
+}
+
+.vdivide {
+  width: 6px;
+  border: 1px solid #C5C5C5;
+  border-width: 0 1px 0 1px;
+  border-right-color:  rgba(0, 0, 0, 0.3);
+  
+  .hbg-gradient(#F9F9F9, #DFE0E1);
+}
+
+#views {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  .hbox();
+}
+
+#views > *:not(.current) {
+  display: none !important;
+}
+
+#title {
+  overflow: hidden;
+  height: 50px;
+  .border-box();  
+  .inset-box-shadow(0px, -1px, 3px, #1D1D1D);
+  .vbg-gradient(#474747, #303030);
+  
+/*  background: -webkit-gradient(linear, left top, left bottom, from(#474747), color-stop(0.5, #474747), color-stop(0.5, #303030), to(#303030));*/
+}
+
+#title h1 {
+  color: #FFF;
+  text-shadow: 0 1px 1px #000;
+  
+  line-height: 50px;
+  margin: 0 0 0 10px;
+  float: left;
+}
+
+#title h1 a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+#title ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#title ul li {
+  padding: 15px 25px;
+  float: left;
+  cursor: pointer;
+  
+  border-right: 1px solid #181818;
+  .box-shadow(1px, 0px, 1px, #525252);  
+  
+  color: #FFF;
+  text-shadow: 0 -1px 1px #000;
+  font-weight: bold;
+  
+  :active {
+    background: #292929;
+    .inset-box-shadow(0, 0, 10px, #181818);
+  }
+}
+
+#title ul li span {
+  .border-radius(12px);
+  padding: 4px 7px 2px 7px;
+  margin-left: 5px;
+  text-shadow: 0 -1px 1px #46677F;
+  .vbg-gradient(#7BB5DB, #4775B8);
+  .inset-box-shadow(0, 1px, 1px, #000);
+}
+
+#title ul li[data-name="conversations"] span {
+}
+
+#title input {
+  margin: 13px 15px;
+  float: right;
+  font-size: 20px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close { display: none !important; }
+
+@import "conversations";
+@import "contacts";
+@import "activities";
+@import "tasks";
+@import "loading";

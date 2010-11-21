@@ -1,0 +1,157 @@
+GIT
+  remote: git://github.com/maccman/authlogic.git
+  revision: acddb9d8b91f6da23268ed67248f430af3513a3a
+  specs:
+    authlogic (2.1.5)
+      activesupport
+
+GIT
+  remote: git://github.com/maccman/less.git
+  revision: b25c0c7ed7cabffdbb0146044c36b5deb597399a
+  specs:
+    less (1.2.21)
+      mutter (>= 0.4.2)
+      treetop (>= 1.4.2)
+
+GIT
+  remote: git://github.com/maccman/supermodel.git
+  revision: 3599867fe915a209612cf24eb326d04b1355b752
+  specs:
+    supermodel (0.1.4)
+      activemodel (~> 3.0.0)
+
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: ef7233d25700a7e69cebd2334b656fa9ca0ae927
+  specs:
+    paperclip (2.3.4)
+      activerecord
+      activesupport
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    abstract (1.0.0)
+    actionmailer (3.0.0)
+      actionpack (= 3.0.0)
+      mail (~> 2.2.5)
+    actionpack (3.0.0)
+      activemodel (= 3.0.0)
+      activesupport (= 3.0.0)
+      builder (~> 2.1.2)
+      erubis (~> 2.6.6)
+      i18n (~> 0.4.1)
+      rack (~> 1.2.1)
+      rack-mount (~> 0.6.12)
+      rack-test (~> 0.5.4)
+      tzinfo (~> 0.3.23)
+    activemodel (3.0.0)
+      activesupport (= 3.0.0)
+      builder (~> 2.1.2)
+      i18n (~> 0.4.1)
+    activerecord (3.0.0)
+      activemodel (= 3.0.0)
+      activesupport (= 3.0.0)
+      arel (~> 1.0.0)
+      tzinfo (~> 0.3.23)
+    activeresource (3.0.0)
+      activemodel (= 3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
+    archive-tar-minitar (0.5.2)
+    arel (1.0.1)
+      activesupport (~> 3.0.0)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
+    builder (2.1.2)
+    columnize (0.3.1)
+    daemons (1.1.0)
+    erubis (2.6.6)
+      abstract (>= 1.0.0)
+    eventmachine (0.12.10)
+    ffi (0.6.3)
+      rake (>= 0.8.7)
+    i18n (0.4.1)
+    juggernaut (2.0.0.beta3)
+      redis
+    linecache19 (0.5.11)
+      ruby_core_source (>= 0.1.4)
+    mail (2.2.7)
+      activesupport (>= 2.3.6)
+      mime-types
+      treetop (>= 1.4.5)
+    mime-types (1.16)
+    mutter (0.5.3)
+    mysql2 (0.2.4)
+    polyglot (0.3.1)
+    rack (1.2.1)
+    rack-less (1.5.0)
+      less (>= 1.2.21)
+      rack (>= 0.4)
+    rack-mount (0.6.13)
+      rack (>= 1.0.0)
+    rack-sprockets (1.0.4)
+      rack (>= 0.4)
+      sprockets (>= 1.0.0)
+    rack-test (0.5.6)
+      rack (>= 1.0)
+    rails (3.0.0)
+      actionmailer (= 3.0.0)
+      actionpack (= 3.0.0)
+      activerecord (= 3.0.0)
+      activeresource (= 3.0.0)
+      activesupport (= 3.0.0)
+      bundler (~> 1.0.0)
+      railties (= 3.0.0)
+    railties (3.0.0)
+      actionpack (= 3.0.0)
+      activesupport (= 3.0.0)
+      rake (>= 0.8.4)
+      thor (~> 0.14.0)
+    rake (0.8.7)
+    redis (2.0.11)
+    ruby-debug-base19 (0.11.24)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.4)
+      archive-tar-minitar (>= 0.5.2)
+    sprockets (1.0.2)
+    sqlite3 (0.1.1)
+      ffi (>= 0.6.3)
+    thin (1.2.7)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    thor (0.14.3)
+    treetop (1.4.8)
+      polyglot (>= 0.3.1)
+    tzinfo (0.3.23)
+    xml-simple (1.0.12)
+    yui-compressor (0.9.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  authlogic!
+  aws-s3
+  juggernaut (>= 2.0.0.beta3)
+  less!
+  mysql2
+  paperclip!
+  rack-less
+  rack-sprockets
+  rails (= 3.0.0)
+  redis (>= 2.0.0.rc2)
+  ruby-debug19
+  sqlite3
+  supermodel!
+  thin
+  yui-compressor

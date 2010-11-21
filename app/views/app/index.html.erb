@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="charset" content="utf-8">
+  <title><%= AppConfig.app_name %></title>
+  <%= stylesheet_link_tag "application" %>
+  <%= csrf_meta_tag %>    
+  <%= javascript_include_tag "application" %>
+</head>
+<body>  
+  <header id="title">
+    <ul>
+      <li data-name="conversations">Messages <span>3</span></li>
+      <li data-name="activities">Activity <span>4</span></li>
+      <li data-name="tasks">Tasks</li>
+      <li data-name="contacts">Contacts</li>
+    </ul>
+    
+    <input type="search" results="0" incremental="true" placeholder="Search">
+  </header>
+  
+  <div id="views">
+    <div data-view="conversations" id="conversations">
+      <%= render :partial => "conversations" %>
+    </div>
+    
+    <div data-view="activities" id="activities">
+      <%= render :partial => "activities" %>
+    </div>
+
+    <div data-view="tasks" id="tasks">
+      <%= render :partial => "tasks" %>
+    </div>
+    
+    <div data-view="contacts" id="contacts">
+      <%= render :partial => "contacts" %>
+    </div>
+    
+    <div data-view="loading" id="loading">
+      <h1>Loading...</h1>
+    </div>
+  </div>
+</body>
+</html>

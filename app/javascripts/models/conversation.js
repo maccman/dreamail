@@ -1,0 +1,1 @@
+var Conversation = SuperModel.setup("Conversation");

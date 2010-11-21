@@ -1,0 +1,138 @@
+@import "utils";
+
+#tasks {
+  .hbox();
+  .box-flex(1);
+  
+  background: #FFF;
+}
+
+#tasks .sidebar {
+  width: 300px;
+  .vbox();
+}
+
+#tasks .create {
+  padding: 8px 7px 7px 7px;
+  border: 1px solid #C5C5C5;
+  border-width: 1px 0 1px 0;
+  .vbg-gradient(#FFF, #DEDFE0);
+}
+
+#tasks .create input {
+  margin: 0 2px 0 0;
+  font-size: 14px;
+  width: 216px;
+  padding: 4px 8px;
+  .border-box();
+}
+
+#tasks .create button {
+  margin: 0;
+  padding: 4px 9px;
+}
+
+#tasks .list {
+  overflow: auto;
+  .box-flex(1);
+}
+
+#tasks .list .item {
+  color: #333333;
+  cursor: pointer;
+  border-bottom: 1px solid #D2D2D1;
+  padding: 15px;
+  
+  input {
+    margin: 0 10px 0 0;
+  }
+    
+  .name {
+    .ellipsis();
+  }
+}
+
+#tasks .list .item.current {
+  color: #FFF;
+  text-shadow: 0 -1px 1px #46677F;
+  .vbg-gradient(#7BB5DB, #4775B8);
+  border-bottom-color: #609FD0;
+  
+  .inset-box-shadow(0, 2px, 2px, #4775B8);
+  -webkit-box-shadow: inset 0 1px 1px #4775B8, inset 0 -1px 1px #3E67A3;
+  
+  .name {
+    color: #FFF;
+  }  
+}
+
+#tasks .list .cta {
+  float: right;
+  font-size: 12px;
+  padding: 0px 6px;
+  margin-top: -3px;
+}
+
+#tasks .main {
+  .box-flex(1);
+  .vbox();
+  
+  .inset-box-shadow(1px, 2px, 2px, rgba(0, 0, 0, 0.1));
+  
+  .contact {
+    padding: 15px;
+  }
+  
+  span {
+    display: block;
+    margin: 0 0 1em 0;
+  }
+}
+
+#tasks .main .options {      
+  margin:  0;
+  padding: 0;
+  list-style: none;
+    
+  color: #333333;
+  font-weight: bold;
+  text-shadow: 0 1px 1px #FFF;
+  font-size: 14px;
+  
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  
+  .vbg-gradient(#FFF, #E0E0E1);
+  .box-shadow(1px, 1px, 2px, rgba(0, 0, 0, 0.1));
+  -webkit-box-shadow: inset -1px -1px 3px #EEE, 1px 1px 2px rgba(0, 0, 0, 0.1);
+  
+  li {
+    float: left;
+    line-height: 30px;
+    height: 30px;
+    padding: 0 20px;
+    cursor: pointer;
+        
+    :active {
+      background: #DADADA;
+      .inset-box-shadow(0, 0, 10px, #9C9C9C);
+    }
+    
+    border-right: 1px solid rgba(0, 0, 0, .3);
+  }
+}
+
+#tasks .emaildivide {
+  width: 30px;
+  line-height: 30px;
+  border-left: none;
+  
+  font-weight: bold;
+  text-shadow: -1px 1px 1px #FFF;
+  overflow: hidden;
+    
+  span {
+    display: block;
+    margin-top: 250px;
+    -webkit-transform: rotate( 90deg );
+  }
+}
