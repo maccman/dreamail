@@ -6,10 +6,41 @@ var state = App.state.add("tasks");
 state.hasView = true;
 
 state.setup(function(){
-  this.slist = this.list.superlist(Task);
+  this.slist = this.list.superlist(Task, {prepend: true});
     
   this.slist.change(this.proxy(function(item){
     this.app.change("tasks", item);
+  }));
+  
+  this.slist.binder.builder = function(element, item){
+    element.toggleClass("completed", !!item.completed);
+    element.find("input").attr("checked", !!item.completed);
+  };
+  
+  this.list.delegate("input", "change", this.proxy(function(e){
+    var element    = $(e.target);
+    var item       = element.item();
+    item.completed = element.attr("checked");
+    item.save();
+    
+    this.app.change("tasks", item);
+  }));
+  
+  this.list.delegate(".item", "toggle", function(){
+    var checkbox = $(this).find("input");
+    checkbox.attr("checked", !checkbox.attr("checked"));
+    checkbox.change();
+  });
+  
+  this.list.delegate(".item", "dblclick", function(){
+    $(this).trigger("toggle");
+  });
+  
+  $("body").keydown(this.proxy(function(e){
+    if ( this.slist.keys && e.which == 32 ) { // Space
+      this.slist.current().trigger("toggle");
+      return false;
+    }
   }));
   
   this.binder = this.selected.connect(Task, {singleton: true});
@@ -19,7 +50,11 @@ state.setup(function(){
   this.form.submit(this.proxy(function(){
     var task  = new Task;
     task.name = this.formName.val();
-    task.save();
+    try {
+      task.save();
+    } catch(e) { return false; }
+    
+    this.app.change("tasks", task);
     
     this.formName.val("");
     this.formName.focus();

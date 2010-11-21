@@ -13,7 +13,7 @@ SuperList.include({
     this.keys    = false;
     this.filterQuery = "";
     
-    this.binder = this.element.connect(klass);
+    this.binder = this.element.connect(klass, this.options);
     this.binder.filter = this.proxy(this.filterFunc);
     this.bindKeys();
     

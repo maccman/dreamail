@@ -13,3 +13,7 @@ Task.extend({
     return(this.select(function(i){ return i.completed }));
   }
 });
+
+Task.beforeSave(function(task){
+  if ($.isBlank(task.name)) throw "Name required";
+});

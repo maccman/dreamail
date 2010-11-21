@@ -253,7 +253,10 @@ SuperConnect.include({
   onCreate: function(item){ 
     if ( !this.filter(item) ) return;
     var elements = this.renderTemplate(item);
-    this.element.append(elements);
+    if (this.options.prepend)
+      this.element.prepend(elements)
+    else
+      this.element.append(elements)
     this.trigger("render");
   },
   
