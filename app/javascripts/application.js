@@ -49,6 +49,7 @@ jQuery(function($){
 //= require <models/contact>
 //= require <models/task>
 //= require <models/activity>
+//= require <models/conversation>
 
 //= require <states/loading>
 //= require <states/conversations>
@@ -56,5 +57,7 @@ jQuery(function($){
 //= require <states/activities>
 //= require <states/tasks>
 //= require <states/menu>
+
+//= require <api>
 
 //= require <preload>

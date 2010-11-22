@@ -19,7 +19,7 @@
   cursor: pointer;
   overflow: hidden;
   position: relative;
-  padding: 8px 13px;
+  padding: 8px 10px;
   
   .body {
     margin-left: 65px;
@@ -46,7 +46,7 @@
   .arrow {
     position: absolute;
     top: 18px;
-    left: 66px;
+    left: 63px;
 
     width: 12px;
     height: 22px;
@@ -56,8 +56,8 @@
   
   .indicator {
     position: absolute;
-    top: 6px;
-    right: 6px;
+    top: 15px;
+    right: 16px;
     
     width: 10px;
     height: 10px;
@@ -80,6 +80,10 @@
   .subject {
     margin-top: 5px;
   } 
+}
+
+#activities .list .item.seen {
+  .indicator { display: none; }
 }
 
 #activities .list .item.current {

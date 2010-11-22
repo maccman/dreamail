@@ -12,6 +12,7 @@ SuperList.include({
     this.options = options;
     this.keys    = false;
     this.filterQuery = "";
+    this.item    = null;
     
     this.binder = this.element.connect(klass, this.options);
     this.binder.filter = this.proxy(this.filterFunc);
@@ -21,17 +22,13 @@ SuperList.include({
       this.change($(e.target).item());
     }));
     
-    this.binder.on("render", this.proxy(function(){
-      // Select first item if nothing else is selected
-      if (this.current().length == 0) {
-        var item = this.element.find(">*:first").item()
-        this.change(item);
-      }
+    this.element.render(this.proxy(function(){
+      this.setItem();
     }));
     
     this.change(this.proxy(function(item){
-      this.current(item);
-    }));
+      this.setItem(item);
+    }))
   },
   
   focus: function(){
@@ -52,12 +49,19 @@ SuperList.include({
     this.render();
   },
   
-  current: function(item){
-    if (item) {
-      this.element.children().removeClass("current");
-      this.element.findItem(item).addClass("current");
-      // TODO - scroll to element
+  setItem: function(item){
+    if (item) this.item = item;
+    this.element.children().removeClass("current");
+    this.element.findItem(this.item).addClass("current");
+    
+    // Select first item if nothing else is selected
+    if (this.current().length == 0) {
+      var item = this.element.find(">*:first").item();
+      if (item) this.change(item);
     }
+  },
+  
+  current: function(item){
     return(this.element.find(".current"));
   },
   

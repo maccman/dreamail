@@ -12,10 +12,11 @@ state.setup(function(){
     this.app.change("tasks", item);
   }));
   
-  this.slist.binder.builder = function(element, item){
+  this.list.renderItem(function(e, item){
+    var element = $(this);
     element.toggleClass("completed", !!item.completed);
     element.find("input").attr("checked", !!item.completed);
-  };
+  });
   
   this.list.delegate("input", "change", this.proxy(function(e){
     var element    = $(e.target);
@@ -45,6 +46,11 @@ state.setup(function(){
   
   this.binder = this.selected.connect(Task, {singleton: true});
   
+  this.selected.render(this.proxy(function(){
+    this.butComplete.toggleDisplay( !this.current.completed );
+    this.butUncomplete.toggleDisplay( !!this.current.completed );
+  }));
+  
   this.slist.render();
   
   this.form.submit(this.proxy(function(){
@@ -52,7 +58,9 @@ state.setup(function(){
     task.name = this.formName.val();
     try {
       task.save();
-    } catch(e) { return false; }
+    } catch(e) {
+      console.error(e);
+    }
     
     this.app.change("tasks", task);
     
@@ -62,23 +70,28 @@ state.setup(function(){
     return false;
   }));
   
-  this.delete.click(this.proxy(function(){
+  this.butDelete.click(this.proxy(function(){
     $.confirm("Are you sure you want to delete this task?", this.proxy(function(){
       this.current.destroy();
     }));
   }));
   
-  this.complete.click(this.proxy(function(){
+  this.butComplete.click(this.proxy(function(){
     this.current.completed = true;
     this.current.save();
   }));
+  
+  this.butUncomplete.click(this.proxy(function(){
+    this.current.completed = false;
+    this.current.save();
+  }));  
 });
 
 state.beforeEnter(function(current){
   if ( !current ) return;
   
   this.current = current;  
-  this.slist.current(this.current);
+  this.slist.setItem(this.current);
   this.binder.setItem(this.current);
 });
 

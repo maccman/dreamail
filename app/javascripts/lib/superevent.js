@@ -1,5 +1,13 @@
 var SuperEvent = {
   on: function(name, callback){     
+    var args  = jQuery.makeArray(arguments);  
+    var names = args.shift().split(" ");
+    
+    for (var i=0; i < names.length; i++)
+      this.onEvent(names[i], callback);
+  },
+  
+  onEvent: function(name, callback){
     if ( !name || !callback ) return;
     if ( !this.handlers ) this.handlers = {};
     if ( !this.handlers[name] ) this.handlers[name] = [];

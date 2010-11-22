@@ -5,6 +5,8 @@ var Task = SuperModel.setup("Task");
 
 Task.attributes = ["name", "notes", "completed"];
 
+Task.include(SuperModel.GUID);
+
 Task.include(SuperModel.Filter);
 Task.filter_attributes = ["name", "notes"];
 

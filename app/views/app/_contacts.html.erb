@@ -12,20 +12,59 @@
       </div>
     </div>
   </div>
+  
+  <footer>
+    <button data-name="butNew">New contact</button>
+  </footer>
 </div>
 
 <div class="vdivide"></div>
 
 <div class="main">
   <ul class="options">
-    <li data-name="delete">Delete contact</li>
-    <li data-name="vcard">Export as VCard</li>
-    <li data-name="email">Email contact</li>
+    <li data-name="butEdit">Edit contact</li>
+    <li data-name="butVCard">Export as VCard</li>
+    <li data-name="butEmail">Email contact</li>
   </ul>
   
-  <div data-name="selected" class="contact">  
-    <span>${first_name}</span>
-    <span>${last_name}</span>
-    <span>${email}</span>
+  <div data-name="selected" class="contact">
+    <div class="lhc">
+      <label>
+        <span>Name</span>
+        ${first_name} ${last_name}
+      </label>
+      <label>
+        <span>Email</span>
+        ${email}
+      </label>
+    
+      <label>
+        <span>Mobile number</span>
+        077 393 57760
+      </label>
+    
+      <label>
+        <span>Work number</span>
+        077 393 57760
+      </label>
+    
+      <label>
+        <span>Address</span>
+        <pre>11 Fleur Gates
+          Princes Way
+          SW19 6QQ</pre>
+      </label>
+    
+      <label>
+        <span>Notes</span>
+        Lorra lorra lopsom
+      </label>
+    </div>
+    
+    <div class="rhc">
+      <p>Facebook</p>
+      <p>LinkedIn</p>
+      <p>Twitter</p>
+    </div>
   </div>
 </div>

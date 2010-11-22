@@ -139,13 +139,14 @@
  */
 var SuperConnect = new SuperClass;
 
-SuperConnect.include(SuperEvent);
 SuperConnect.include({
   init: function(element, klass, options){
     this.options    = options || {};
     this.singleton  = this.options.singleton || false;
     this.collection = !this.singleton;
     this.filter     = function(){ return true; };
+    
+    // Builders are now deprecated in favour of events
     this.builder    = this.options.builder;
     
     this.setKlass(klass);
@@ -196,14 +197,17 @@ SuperConnect.include({
     // Generate and append elements
     var elements = this.renderTemplate(data);
     
-    this.trigger("beforeRender", elements, data);
+    this.element.trigger("beforeRender");
     
     if ( !this.options.custom ) {
       this.element.empty();
       this.element.append(elements);
+            
+      for (var i=0; i < elements.length; i++)
+        jQuery(elements[i]).trigger("render", data[i]);
     }
     
-    this.trigger("render afterRender");
+    this.element.trigger("render");
   },
 
   // Private functions
@@ -254,19 +258,19 @@ SuperConnect.include({
     if ( !this.filter(item) ) return;
     var elements = this.renderTemplate(item);
     if (this.options.prepend)
-      this.element.prepend(elements)
+      this.element.prepend(elements);
     else
-      this.element.append(elements)
-    this.trigger("render");
+      this.element.append(elements);
+    jQuery(elements).trigger("render", item);
+    this.element.trigger("render");
   },
   
   onUpdate: function(item){
     if ( !this.filter(item) ) return;
     if (item.id) {
-      this.findItem(item).replaceWith(
-        this.renderTemplate(item)
-      );
-      this.trigger("render");      
+      this.findItem(item).replaceWith(this.renderTemplate(item));
+      this.findItem(item).trigger("render", item);
+      this.element.trigger("render");
     } else {
       this.render();
     }
@@ -276,7 +280,7 @@ SuperConnect.include({
     if ( !this.filter(item) ) return;
     if (item.id) {
       this.findItem(item).remove();
-      this.trigger("render");
+      this.element.trigger("render");
     } else {
       this.render();
     }
@@ -303,6 +307,14 @@ $.fn.findItem = function(item){
 
 $.fn.connect = function(klass, options){
   return(new SuperConnect($(this), klass, options));
+};
+
+$.fn.render = function(cb){
+  return($(this).bind("render", cb));
+};
+
+$.fn.renderItem = function(cb){
+  return($(this).delegate(".connect-item", "render", cb));
 };
 
 })(jQuery);

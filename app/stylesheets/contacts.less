@@ -24,6 +24,15 @@
   width: 100%;
 }
 
+#contacts .sidebar footer {
+  padding: 6px;
+  border-top: 1px solid #C5C5C5;
+  .vbg-gradient(#FFF, #DEDFE0);
+  .box-shadow(0, -1px, 2px, rgba(0, 0, 0, 0.1));
+  
+  text-align: right;  
+}
+
 #contacts .list {
   overflow: auto;
   .box-flex(1);
@@ -79,16 +88,33 @@
 #contacts .main {
   .box-flex(1);
   .vbox();
+  overflow: auto;
   
-  .inset-box-shadow(1px, 2px, 2px, rgba(0, 0, 0, 0.1));
+  .inset-box-shadow(1px, 2px, 2px, rgba(0, 0, 0, 0.1));  
+}
+
+#contacts .main .contact {
+  padding: 15px;
+  .hbox();
   
-  .contact {
-    padding: 15px;
+  .lhc { .box-flex(1); }
+  .rhc { 
+    height: 100%;
+    width: 300px;
+    .border-radius(5px);
+    padding: 15px;    
+    border: 1px solid #E0E0E0;
+    background: #EFEFEF;
+    text-shadow: 0 1px 1px #FFF;
   }
   
-  span {
-    display: block;
+  p {
     margin: 0 0 1em 0;
+    :last-child { margin-bottom: 0; }
+  }
+  
+  label {
+    -webkit-user-select: text;
   }
 }
 

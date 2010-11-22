@@ -6,6 +6,8 @@ var Contact = SuperModel.setup("Contact");
 Contact.attributes = ["first_name", "last_name", "email",
                       "mobile", "work", "address", "notes"];
                       
+Contact.include(SuperModel.GUID);
+                      
 Contact.include(SuperModel.Filter);
 Contact.filter_attributes = ["first_name", "last_name", "email", "mobile", "work"];
 

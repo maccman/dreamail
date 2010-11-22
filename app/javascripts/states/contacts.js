@@ -20,20 +20,25 @@ state.setup(function(){
   
   this.slist.render();
   
-  this.delete.click(this.proxy(function(){
-    $.confirm("Are you sure you want to delete this contact?", this.proxy(function(){
-      this.current.destroy();
-    }));
-  }));
+  // this.butDelete.click(this.proxy(function(){
+  //   $.confirm("Are you sure you want to delete this contact?", this.proxy(function(){
+  //     this.current.destroy();
+  //   }));
+  // }));
   
-  this.vcard.click(this.proxy(function(){
+  this.butVCard.click(this.proxy(function(){
     // TODO
     console.log('vcard');
   }));
   
-  this.email.click(this.proxy(function(){
+  this.butEmail.click(this.proxy(function(){
     // TODO
     console.log('email ' + this.current.email);
+  }));
+  
+  this.butNew.click(this.proxy(function(){
+    // TODO
+    console.log('new ')
   }));
 });
 
@@ -41,7 +46,7 @@ state.beforeEnter(function(current){
   if ( !current ) return;
   
   this.current = current;  
-  this.slist.current(this.current);
+  this.slist.setItem(this.current);
   this.binder.setItem(this.current);
 });
 

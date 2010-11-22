@@ -1,3 +1,7 @@
+##TODO
+
+* cleanup superconnect & the jQuery calls
+
 ##Two aims
 
 1) Make email much simpler, remove the features that I don't use, such as Labels, Drafts, Archiving.

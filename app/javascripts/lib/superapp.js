@@ -61,7 +61,7 @@ SuperApp.State.include({
   },
   
   delay: function(func, timeout){
-    setTimeout(this.proxy(func, timeout || 0));
+    setTimeout(this.proxy(func), timeout || 0);
   }
 });
 
