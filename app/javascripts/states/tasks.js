@@ -38,7 +38,8 @@ state.setup(function(){
   });
   
   $("body").keydown(this.proxy(function(e){
-    if ( this.slist.keys && e.which == 32 ) { // Space
+    // If target isn't an input, this state is current and the key is the spacebar
+    if ( !("value" in e.target) && this.slist.keys && e.which == 32 ) { // Space
       this.slist.current().trigger("toggle");
       return false;
     }
@@ -58,11 +59,8 @@ state.setup(function(){
     task.name = this.formName.val();
     try {
       task.save();
-    } catch(e) {
-      console.error(e);
-    }
-    
-    this.app.change("tasks", task);
+      this.app.change("tasks", task);
+    } catch(e) {}
     
     this.formName.val("");
     this.formName.focus();

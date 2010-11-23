@@ -6,7 +6,8 @@ state.hasView = true;
 state.load(function(){
   Activity.on("unseenCount", function(count){
     var element = $("#title li[data-name=activities] span");
-    count > 0 ? element.text(count).fadeIn() : element.fadeOut();
+    element.text(count);
+    count > 0 ? element.fadeIn() : element.fadeOut();
   });
   Activity.trigger("unseenCount", 0);
 });

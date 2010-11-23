@@ -232,18 +232,22 @@ SuperConnect.include({
   
   renderTemplate: function(data){
     data = jQuery.makeArray(data);
-    return jQuery.map( data, this.proxy(function( data, i ) {
-  		var element  = this.template && this.template.call( data, jQuery, data, i );
-      var jElement = jQuery(element || []);
+    var result = jQuery();
+    
+    jQuery.each( data, this.proxy(function( i, data ) {
+  		var element = this.template && this.template.call( data, jQuery, data, i );
+      element = jQuery(element || []);
       
-      if (this.builder) this.builder.call(jElement, jElement, data);
+      if (this.builder) this.builder.call(element, element, data);
       
-      jElement.attr({"data-id": data.id, "data-klass": this.klass.className});
-      jElement.data({id: data.id, klass: this.klass.className});
-      jElement.addClass("connect-item");
+      element.attr({"data-id": data.id, "data-klass": this.klass.className});
+      element.data({id: data.id, klass: this.klass.className});
+      element.addClass("connect-item");
   		
-  		return element;
+  		result = result.add(element);
   	}));
+  	
+  	return result;
   },
     
   findItem: function(item){
@@ -261,7 +265,7 @@ SuperConnect.include({
       this.element.prepend(elements);
     else
       this.element.append(elements);
-    jQuery(elements).trigger("render", item);
+    elements.trigger("render", item);
     this.element.trigger("render");
   },
   

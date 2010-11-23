@@ -1,6 +1,7 @@
 ##TODO
 
 * cleanup superconnect & the jQuery calls
+* can't have space in task names
 
 ##Two aims
 

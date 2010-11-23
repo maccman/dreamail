@@ -94,7 +94,7 @@
 }
 
 #contacts .main .contact {
-  padding: 15px;
+  padding: 20px;
   .hbox();
   
   .lhc { .box-flex(1); }
@@ -106,6 +106,24 @@
     border: 1px solid #E0E0E0;
     background: #EFEFEF;
     text-shadow: 0 1px 1px #FFF;
+    
+    img { 
+      float: left;
+      width: 48px;
+      height: 48px;
+
+      .border-radius(5px);
+      .box-shadow(0px, 1px, 2px, #7F7F7F);
+    }
+    
+    header { 
+      padding: 3px;
+      overflow: hidden; 
+    }
+    
+    .bio {
+      margin: 5px 5px 5px 65px;
+    }
   }
   
   p {
