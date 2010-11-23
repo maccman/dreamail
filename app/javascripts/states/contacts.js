@@ -38,7 +38,7 @@ state.setup(function(){
   
   this.butNew.click(this.proxy(function(){
     // TODO
-    console.log('new ')
+    console.log('new ');
   }));
 });
 
