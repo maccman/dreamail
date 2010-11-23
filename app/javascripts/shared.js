@@ -72,6 +72,14 @@
     return $(this.selector);
   };
   
+  $.fn.serializeForm = function(){
+    var result = {};
+    $.each($(this).serializeArray(), function(i, item){
+      result[item.name] = item.value;
+    });
+    return result;
+  };
+  
   $.fn.replaceImageWhenLoaded = function(src){
     var self = $(this);
     var newImage = new Image();

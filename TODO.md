@@ -1,7 +1,6 @@
 ##TODO
 
-* cleanup superconnect & the jQuery calls
-* can't have space in task names
+* bug in editing than changing current in contacts
 
 ##Two aims
 

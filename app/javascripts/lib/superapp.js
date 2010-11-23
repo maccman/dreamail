@@ -27,9 +27,10 @@ SuperApp.include({
     var state    = this.states[name];
     
     if ( !state ) throw "Unknown state: " + name;
-        
+    
     state.runSetup();
     previous.beforeExit();
+    
     state.beforeEnter.apply(state, args);
     
     this.current = state;
@@ -38,6 +39,8 @@ SuperApp.include({
     previous.afterExit();
     
     this.trigger("change", name, state);
+    
+    return this.current;
   }
 });
 

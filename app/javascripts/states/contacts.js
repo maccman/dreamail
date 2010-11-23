@@ -5,8 +5,24 @@
 var state = App.state.add("contacts");
 state.hasView = true;
 
+state.showState = function(){
+  this.editToolbar.hide();
+  this.editView.reload().hide();
+  
+  this.showToolbar.show();
+  this.showView.reload().show();
+};
+
+state.editState = function(){
+  this.showToolbar.hide();
+  this.showView.reload().hide();
+  
+  this.editToolbar.show();
+  this.editView.reload().show();
+};
+
 state.setup(function(){
-  this.slist = this.list.superlist(Contact);
+  this.slist = this.list.superlist(Contact, {prepend: true});
   
   this.search.bind("keyup click", this.proxy(function(){
     this.slist.filter(this.search.val());
@@ -20,11 +36,26 @@ state.setup(function(){
   
   this.slist.render();
   
-  // this.butDelete.click(this.proxy(function(){
-  //   $.confirm("Are you sure you want to delete this contact?", this.proxy(function(){
-  //     this.current.destroy();
-  //   }));
-  // }));
+  this.butDelete.click(this.proxy(function(){
+    $.confirm("Are you sure you want to delete this contact?", this.proxy(function(){
+      this.current.destroy();
+    }));
+  }));
+  
+  this.showView.live("submit", this.proxy(function(){
+    this.current.updateAttributes(
+      this.editView.reload().serializeForm()
+    );
+    this.showState();  
+    
+    return false;
+  }));
+  
+  this.butEdit.click(this.proxy(this.editState));
+  
+  this.butSave.click(this.proxy(function(){
+    this.showView.reload().submit();
+  }));
   
   this.butVCard.click(this.proxy(function(){
     // TODO
@@ -37,17 +68,19 @@ state.setup(function(){
   }));
   
   this.butNew.click(this.proxy(function(){
-    // TODO
-    console.log('new ');
-  }));
+    var contact = Contact.create();
+    this.app.change("contacts", contact).editState();
+  }));  
 });
 
-state.beforeEnter(function(current){
+state.beforeEnter(function(current){  
   if ( !current ) return;
   
   this.current = current;  
   this.slist.setItem(this.current);
-  this.binder.setItem(this.current);
+  this.binder.setItem(this.current);  
+  
+  this.showState();
 });
 
 state.afterEnter(function(){

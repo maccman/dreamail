@@ -7,7 +7,11 @@
     <div class="item">
       <%= image_tag "missing.png" %>
       <div>
-        <span>${fullName()}</span>
+        {{if fullName()}}
+          <span>${fullName()}</span>
+        {{else}}
+          <span class="empty">No Name</span>
+        {{/if}}
         <span class="cta">&gt;</span>
       </div>
     </div>
@@ -22,57 +26,114 @@
 
 <div class="main">
   <ul class="options">
-    <li data-name="butEdit">Edit contact</li>
-    <li data-name="butVCard">Export as VCard</li>
-    <li data-name="butEmail">Email contact</li>
+    <div data-name="showToolbar">
+      <li data-name="butEdit">Edit contact</li>
+      <li data-name="butVCard">Export as VCard</li>
+      <li data-name="butEmail">Email contact</li>
+    </div>
+    
+    <div data-name="editToolbar">
+      <li data-name="butSave" class="default">Save contact</li>
+      <li data-name="butDelete">Delete contact</li>
+    </div>
   </ul>
   
   <div data-name="selected" class="contact">
-    <div class="lhc">
+    <div data-name="showView">
+      <div class="panel">
+        <header>
+          <%= image_tag "missing.png" %>
+        
+          <div class="bio">
+            He's just this guy you know. Some more dummy text about startups / jobs.
+          </div>
+        </header>
+      
+        <hr />
+      
+        Facebook, LinkedIn, Twitter
+      </div>
+      
       <label>
         <span>Name</span>
         ${first_name} ${last_name}
       </label>
+
       <label>
         <span>Email</span>
-        ${email}
+        {{if email}}
+          ${email}
+        {{else}}
+          <div class="empty">Blank</div>
+        {{/if}}
+      </label>
+  
+      {{if mobile}}
+      <label>
+        <span>Mobile number</span>
+        ${mobile}
+      </label>
+      {{/if}}
+
+      {{if work}}
+      <label>
+        <span>Work number</span>
+        ${work}
+      </label>
+      {{/if}}
+
+      {{if address}}
+      <label>
+        <span>Address</span>
+        <pre>${address}</pre>
+      </label>
+      {{/if}}
+
+      <label>
+        <span>Notes</span>
+        {{if notes}}
+          ${notes}
+        {{else}}
+          <div class="empty">Blank</div>
+        {{/if}}
+      </label>
+    </div>
+    
+    <form class="hide" data-name="editView">
+      <label>
+        <span>First name</span>
+        <input type="text" name="first_name" value="${first_name}" autofocus>
+      </label>
+      
+      <label>
+        <span>Last name</span>
+        <input type="text" name="last_name" value="${last_name}">
+      </label>
+      
+      <label>
+        <span>Email</span>
+        <input type="text" name="email" value="${email}">
       </label>
     
       <label>
         <span>Mobile number</span>
-        077 393 57760
+        <input type="text" name="mobile" value="${mobile}">
       </label>
-    
+  
       <label>
         <span>Work number</span>
-        077 393 57760
+        <input type="text" name="work" value="${work}">
       </label>
-    
+
       <label>
         <span>Address</span>
-        11 Fleur Gates<br />
-        Princes Way<br />
-        SW19 6QQ<br />
+        <textarea name="address">${address}</textarea>
       </label>
-    
+
       <label>
         <span>Notes</span>
-        Lorra lorra lopsom
+        <textarea name="notes">${notes}</textarea>
       </label>
-    </div>
-    
-    <div class="rhc">
-      <header>
-        <%= image_tag "missing.png" %>
-        
-        <div class="bio">
-          He's just this guy you know. Some more dummy text about startups / jobs.
-        </div>
-      </header>
-      
-      <hr />
-      
-      Facebook, LinkedIn, Twitter
-    </div>
+    </form>
   </div>
 </div>

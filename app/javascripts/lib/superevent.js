@@ -19,7 +19,7 @@ var SuperEvent = {
     var names = args.shift().split(" ");
     
     for (var i=0; i < names.length; i++)
-      this.triggerEvent(names[i], args);
+      this.triggerEvent(names[i], args);      
   },
   
   triggerEvent: function(name, args){
@@ -27,7 +27,7 @@ var SuperEvent = {
     
     var callbacks = this.handlers[name];
     if ( !callbacks ) return;
-
+    
     for(var i=0, len = callbacks.length; i < len; i++)
       callbacks[i].apply(this, args);
   },

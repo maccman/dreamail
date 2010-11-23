@@ -188,6 +188,11 @@ input[type="password"] {
   background: -webkit-gradient(linear, left top, left bottom, from(#E6E6E7), color-stop(0.3, #FAFAFA), to(#FAFAFA));  
 }
 
+textarea {
+  .border-radius(10px);
+  height: 70px;
+}
+
 input.plain {
   -webkit-appearance: searchfield;
   padding: 5px 7px;
@@ -207,12 +212,12 @@ label span {
   margin-left: -3px;
   
   font-weight: bold;
-  font-size: 13px;
-  
+  font-size: 13px; 
 }
 
 label input {
   font-size: 14px;
+  display: block;
 }
 
 label input[type="checkbox"] {
@@ -225,14 +230,13 @@ label input[type="checkbox"] + span {
   display: inline;
 }
 
-label input {
-  display: block;
-}
-
 label input[type="text"],
 label input[type="password"],
 textarea {
-  width: 200px;
+  width: 220px;  
+  margin: 0 2px 0 0;
+  padding: 4px 8px;
+  .border-box();  
 }
 
 input.dark {

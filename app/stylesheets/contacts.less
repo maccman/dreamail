@@ -5,6 +5,10 @@
   .box-flex(1);
   
   background: #FFF;
+  
+  .empty {
+    font-style: italic;
+  }
 }
 
 #contacts .sidebar {
@@ -88,18 +92,19 @@
 #contacts .main {
   .box-flex(1);
   .vbox();
-  overflow: auto;
   
   .inset-box-shadow(1px, 2px, 2px, rgba(0, 0, 0, 0.1));  
 }
 
 #contacts .main .contact {
   padding: 20px;
-  .hbox();
+  .box-flex(1);
+  .vbox();
+  overflow: auto;
   
-  .lhc { .box-flex(1); }
-  .rhc { 
-    height: 100%;
+  .panel { 
+    float: right;
+    
     width: 300px;
     .border-radius(5px);
     padding: 15px;    
@@ -114,10 +119,10 @@
 
       .border-radius(5px);
       .box-shadow(0px, 1px, 2px, #7F7F7F);
+      margin: 2px;
     }
     
     header { 
-      padding: 3px;
       overflow: hidden; 
     }
     
@@ -129,7 +134,7 @@
       margin: 5px 5px 5px 65px;
     }
   }
-  
+    
   p {
     margin: 0 0 1em 0;
     :last-child { margin-bottom: 0; }
@@ -140,7 +145,7 @@
   }
 }
 
-#contacts .main .options {      
+#contacts .main .options {
   margin:  0;
   padding: 0;
   list-style: none;
@@ -169,5 +174,17 @@
     }
     
     border-right: 1px solid rgba(0, 0, 0, .3);
+  }
+  
+  li.default {
+    color: #FFF;
+    text-shadow: 0 -1px 1px #46677F;
+    .vbg-gradient(#7BB5DB, #4775B8);
+    
+    :active {
+      border-left-color: #A8A8A8;
+      background: #7BB5DB;
+      .inset-box-shadow(0, 0, 10px, #4775B8);
+    }
   }
 }
