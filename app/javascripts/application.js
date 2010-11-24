@@ -33,6 +33,19 @@ App.extend({
   }
 });
 
+// App.route({
+//   "/contacts": "contacts",
+//   "/contacts/:id": function(route){
+//     this.change("contacts", User.find(route.id));
+//   },
+//   "/tasks": "tasks",
+//   "/tasks/:id": function(route){
+//     this.change("tasks", Task.find(route.id));
+//   },
+//   "/activity": "activity",
+//   "/conversations": "conversations"
+// });
+
 jQuery(function($){
   App.state.view = new SuperApp.View($("#views"));
   App.user_id    = $("meta[name=user-id]").attr("content");
