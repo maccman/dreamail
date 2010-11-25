@@ -1,8 +1,7 @@
 //= require <superclass>
 //= require <supermodel>
-//= require <supermodel.marshal>
 
-var SuperModel.Resource = new SuperClass;
+SuperModel.Resource = new SuperClass;
 
 (function($){
   var Resource = SuperModel.Resource;
@@ -56,10 +55,10 @@ var SuperModel.Resource = new SuperClass;
   };
     
   Resource.include({
-    init: function(model, endpoint){
+    init: function(model, endpoint){      
       this.model    = model;
       this.endpoint = endpoint;
-      
+            
       if ( !this.endpoint )
         this.endpoint = join(null, pathify(this.model.className));
     },
@@ -87,7 +86,7 @@ var SuperModel.Resource = new SuperClass;
           var instance = new this.model(record);
           instance.newRecord = false;
           callback(instance)
-        },
+        }
       );
     },
     
@@ -100,7 +99,7 @@ var SuperModel.Resource = new SuperClass;
             instance.newRecord = false;
             return instance;
           }));
-        },
+        }
       );
     },
     
@@ -137,6 +136,12 @@ var SuperModel.Resource = new SuperClass;
   });
   
   Resource.Model = {
+    preload: function(){
+      this.resource().get(
+        null, this.proxy(this.populate)
+      );
+    },
+        
     resource: function(){
       return(new Resource(this, this.endpoint));
     },
@@ -144,17 +149,17 @@ var SuperModel.Resource = new SuperClass;
     extended: function(base){
       base.endpoint = join(null, pathify(base.className));
       
-      base.afterCreate(function(rec){
-        base.resource().create(rec);
-      });
-
-      base.afterUpdate(function(rec){
-        base.resource().update(rec);
-      });
-
-      base.afterDestroy(function(rec){
-        base.resource().destroy(rec);
-      });
+      // base.afterCreate(function(rec){
+      //   base.resource().create(rec);
+      // });
+      // 
+      // base.afterUpdate(function(rec){
+      //   base.resource().update(rec);
+      // });
+      // 
+      // base.afterDestroy(function(rec){
+      //   base.resource().destroy(rec);
+      // });
     }
   };
 })(jQuery)

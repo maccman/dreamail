@@ -1,26 +1,32 @@
 jQuery(function($){
   App.trigger("loading");
   
-  for (var i=0; i < 15; i++) {
-    Contact.create({
-      email: "maccman" + i + "@gmail.com",
+  var contactData = [];
+  for (var i=0; i < 15; i++)
+    contactData.push({
+      id:         i,
+      email:      "maccman" + i + "@gmail.com",
       first_name: "Alex",
-      last_name: "MacCaw"
+      last_name:  "MacCaw"
     });
-  };
+  Contact.populate(contactData);
   
-  for (var i=0; i < 15; i++) {
-    Task.create({
+  var taskData = [];
+  for (var i=0; i < 15; i++)
+    taskData.push({
+      id:   i,
       name: "Task " + i,
     });
-  };
+  Task.populate(taskData);
   
-  for (var i=0; i < 15; i++) {
-    Activity.create({
+  var activityData = [];
+  for (var i=0; i < 15; i++)
+    activityData.push({
+      id:       i,
       subject: "Activity " + i,
       from:    "Lorra Lorra Lorem"
     });
-  };
+  Activity.populate(activityData);
   
   App.trigger("loaded");
 

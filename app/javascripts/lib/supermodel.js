@@ -120,7 +120,7 @@ SuperModel.extend({
     for (var i=0, il = values.length; i < il; i++) {    
       var record = new this(values[i])
       record.newRecord = false;
-      this.records[record.id] = record;
+      record.rawCreate();
     }
     this.trigger("populate");
   },
