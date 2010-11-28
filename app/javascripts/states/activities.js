@@ -29,11 +29,16 @@ state.setup(function(){
 });
 
 state.beforeEnter(function(current){
+  if ( !current || current.eql(this.current) ) return;
+  this.navigate("/activity");
+});
+
+state.beforeEnter(function(current){
   if ( !current ) return;
   
   this.current = current;  
   this.slist.current(this.current);
-  this.binder.setItem(this.current);
+  this.binder.setItem(this.current);  
 });
 
 state.afterEnter(function(){
@@ -48,5 +53,6 @@ state.afterEnter(function(){
 state.beforeExit(function(){
   this.slist.unfocus();
 });
+
 
 })(jQuery);

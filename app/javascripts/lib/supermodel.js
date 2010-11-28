@@ -200,6 +200,11 @@ SuperModel.include({
     return result;
   },
   
+  eql: function(rec){
+    return(rec && rec.id == this.id && 
+           rec._class.className == this._class.className);
+  },
+  
   // Private
   
   trigger: function(name){

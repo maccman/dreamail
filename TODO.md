@@ -2,6 +2,14 @@
 
 * bug in editing than changing current in contacts
 
+* html stripper for email
+* html wysiwyg
+  * bold
+  * italic
+  * bullets
+  * link
+  
+
 ##Two aims
 
 1) Make email much simpler, remove the features that I don't use, such as Labels, Drafts, Archiving.

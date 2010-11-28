@@ -7,6 +7,7 @@
 //= require <superevent>
 //= require <superapp>
 //= require <superapp.view>
+//= require <superroute>
 //= require <supermodel>
 //= require <superconnect>
 
@@ -33,18 +34,22 @@ App.extend({
   }
 });
 
-// App.route({
-//   "/contacts": "contacts",
-//   "/contacts/:id": function(route){
-//     this.change("contacts", User.find(route.id));
-//   },
-//   "/tasks": "tasks",
-//   "/tasks/:id": function(route){
-//     this.change("tasks", Task.find(route.id));
-//   },
-//   "/activity": "activity",
-//   "/conversations": "conversations"
-// });
+App.state.route({
+  "/contacts": "contacts",
+  "/contacts/:id": function(route){
+    this.change("contacts", Contact.find(route.id));
+  },
+  "/tasks": "tasks",
+  "/tasks/:id": function(route){
+    this.change("tasks", Task.find(route.id));
+  },
+  "/activity": "activities",
+  "/messages": "conversations"
+});
+
+// Disable hash routing for the time being,
+// not sure if it's that useful
+SuperApp.State.fn.navigate = jQuery.noop;
 
 jQuery(function($){
   App.state.view = new SuperApp.View($("#views"));
@@ -54,6 +59,9 @@ jQuery(function($){
     
   App.on("loaded", function(){
     App.state.change("loading");
+    
+    if (window.location.hash != "")
+      $(window).trigger("hashchange");
   });
   
   App.state.change("loading");

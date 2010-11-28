@@ -86,6 +86,11 @@ state.setup(function(){
 });
 
 state.beforeEnter(function(current){
+  if ( !current || current.eql(this.current) ) return;
+  this.navigate("/tasks", this.current && this.current.id);
+});
+
+state.beforeEnter(function(current){
   if ( !current ) return;
   
   this.current = current;  

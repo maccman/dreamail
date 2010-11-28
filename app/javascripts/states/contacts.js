@@ -73,14 +73,19 @@ state.setup(function(){
   }));  
 });
 
+state.beforeEnter(function(current){
+  if ( !current || current.eql(this.current) ) return;
+  this.navigate("/contacts", this.current && this.current.id);
+});
+
 state.beforeEnter(function(current){  
   if ( !current ) return;
   
   this.current = current;  
   this.slist.setItem(this.current);
-  this.binder.setItem(this.current);  
+  this.binder.setItem(this.current);
   
-  this.showState();
+  this.showState();  
 });
 
 state.afterEnter(function(){

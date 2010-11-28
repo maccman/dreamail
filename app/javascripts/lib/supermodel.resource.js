@@ -23,7 +23,7 @@ SuperModel.Resource = new SuperClass;
 		});
   };
   
-  $.delete = function( url, callback, type ) {
+  $.ajaxDelete = function( url, callback, type ) {
 		return $.ajax({
 			type: "DELETE",
 			url: url,
@@ -35,7 +35,7 @@ SuperModel.Resource = new SuperClass;
   Resource.get    = $.get;
   Resource.post   = $.post;
   Resource.put    = $.put;
-  Resource.delete = $.delete;
+  Resource.ajaxDelete = $.ajaxDelete;
   
   var underscore = function(str) {
     return str.replace(/::/g, "/")
@@ -75,8 +75,8 @@ SuperModel.Resource = new SuperClass;
       return this._class.put(join(this.endpoint, path), data, callback, "json");
     },
     
-    delete: function(path, callback){ 
-      return this._class.delete(join(this.endpoint, path), callback, "json");
+    ajaxDelete: function(path, callback){ 
+      return this._class.ajaxDelete(join(this.endpoint, path), callback, "json");
     },
     
     findSingle: function(path, callback){
@@ -128,7 +128,7 @@ SuperModel.Resource = new SuperClass;
     },
     
     destroy: function(instance, callback){
-      return this.delete(
+      return this.ajaxDelete(
         instance.id,
         callback
       );
