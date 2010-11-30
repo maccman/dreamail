@@ -40,7 +40,7 @@
       
       element.exec("unlink");
       var href = prompt("Enter a link:", "http://");
-      if ( !href ) return;
+      if ( !href || href == "http://" ) return;
       if ( !(/:\/\//).test(href) ) href = "http://" + href;
       element.exec("createLink", href);
     };

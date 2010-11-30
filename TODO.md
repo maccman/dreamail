@@ -3,11 +3,11 @@
 * bug in editing than changing current in contacts
 
 * html stripper for email
-* html wysiwyg
-  * bold
-  * italic
-  * bullets
-  * link
+* specifying 'to'
+* specifying 'subject'
+* attachments view
+
+Look at Facebook's new messaging system - that's the future.
   
 
 ##Two aims
@@ -19,6 +19,9 @@
 * Maybe default order is by unread?
 * WYSIWYG and html parsing
 * Better name
+  * Telegraph
+  * Cable
+  
 * Spam - done by Gmail atm?
 * Label support?
 * Avoid the round-robin process if emails are sent internally?
@@ -92,5 +95,7 @@ We need to cater for when people:
 In which case we can detect these have changed, and prompt everyone else to update their information. 
 
 Where are we going to get this from? The same source as Rapportive. Also, how about our own db. If it's a dreamail email, we query our own db for info. 
+
+Google Profiles, Gravatar, LinkedIn, Plancast, Rapleaf, Stack Overflow and Twitter,
 
 Bug with down arrow.
