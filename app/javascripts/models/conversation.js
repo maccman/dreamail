@@ -1,9 +1,9 @@
 var Conversation = SuperModel.setup("Conversation");
 Conversation.include(SuperModel.GUID);
 
-Conversation.attributes = ["seen"];
+Conversation.attributes = ["subject", "body", "seen"];
 
-// Conversation Unseen Count
+// Conversation unseen count
 
 Conversation.extend({
   unseen: function(){
@@ -20,5 +20,14 @@ Conversation.on("save populate", function(){
   if (Conversation.unseenCount != newCount) {
     Conversation.unseenCount = newCount;
     Conversation.trigger("unseenCount", newCount);
+  }
+});
+
+Conversation.include({
+  hasSeen: function(){
+    if (this.seen) return;
+    
+    this.seen = true;
+    this.save();
   }
 });

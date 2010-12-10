@@ -27,10 +27,48 @@ state.setup(function(){
   this.editControls.find("[data-type=attachment]").browseElement(function(files){
     console.log(files)
   });
-})
+  
+  this.butSend.click(function(){
+    console.log('send email');
+  });
+});
 
-state.beforeEnter(function(){
-  this.navigate("/messages", this.current && this.current.id);
+state.setup(function(){
+  this.slist = this.list.superlist(Conversation);
+  
+  this.slist.change(this.proxy(function(item){
+    this.app.change("conversations", item);
+  }));
+  
+  this.list.renderItem(function(e, item){
+    $(this).toggleClass("seen", !!item.seen);
+  });
+  
+  this.slist.render();
+});
+
+state.beforeEnter(function(current){
+  if ( !current ) return;
+  
+  this.current = current;
+  
+  this.delay(function(){
+    if (this.current == current)
+      this.current.hasSeen();
+  }, 100);
+});
+
+state.beforeEnter(function(current){
+  if ( !current || current.eql(this.current) ) return;
+  this.navigate("/messages", current.id);
+});
+
+state.afterEnter(function(){
+  this.slist.focus();
+});
+
+state.beforeExit(function(){
+  this.slist.unfocus();
 });
 
 })(jQuery);

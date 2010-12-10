@@ -1,38 +1,18 @@
+<div class="sidebar">
+  <div class="inner">
+    <div data-name="list" class="list">
+      <div class="item">
+        <%= image_tag "missing.png" %>
+        <div>
+          <span class="subject">${subject}</span>
+          <span class="body">${body}</span>
+          <span class="timestamp">7:42 pm</span>
+        </div>
+      </div>
+    </div>
 
-<div data-name="list" class="list">
-  <div class="item">
-    <%= image_tag "missing.png" %>
-    <div>
-      <span class="subject">Hi there ...</span>
-      <span class="body">Secondary line of text runs full width</span>
-      <span class="timestamp">7:42 pm</span>
-    </div>
-  </div>
-
-  <div class="item current">
-    <%= image_tag "missing.png" %>
-    <div>
-      <span class="subject">Hi there ...</span>
-      <span class="body">Secondary line of text runs full width</span>
-      <span class="timestamp">7:42 pm</span>
-    </div>
-  </div>
-  
-  <div class="item">
-    <%= image_tag "missing.png" %>
-    <div>
-      <span class="subject">Hi there ...</span>
-      <span class="body">Secondary line of text runs full width</span>
-      <span class="timestamp">7:42 pm</span>
-    </div>
-  </div>
-  
-  <div class="item">
-    <%= image_tag "missing.png" %>
-    <div>
-      <span class="subject">Hi there ...</span>
-      <span class="body">Secondary line of text runs full width</span>
-      <span class="timestamp">7:42 pm</span>
+    <div class="more" data-name="butMore">
+      Load archived...
     </div>
   </div>
 </div>
@@ -41,8 +21,7 @@
 
 <div class="main">
   <ul class="options">
-    <li>Reply</li>
-    <li>Forward</li>
+    <li>Archive</li>
     
     <div class="right">
       <li>Previous</li>
@@ -62,7 +41,7 @@
         <li><a href="#" data-type="attachment">Attachment</a></li>
         
         <div class="right">
-          <li><a href="#" class="default">Send</a></li>
+          <li><a href="#" class="default" data-name="butSend">Send</a></li>
         </div>
       </ul>
       <div class="body">

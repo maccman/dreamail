@@ -28,6 +28,15 @@ jQuery(function($){
     });
   Activity.populate(activityData);
   
+  var conversationData = [];
+  for (var i=0; i < 15; i++)
+    conversationData.push({
+      id:       i,
+      subject: "Conversation " + i,
+      body:    "Lorra Lorra Lorem. Lorra Lorra Lorem."
+    });
+  Conversation.populate(conversationData);
+  
   App.trigger("loaded");
 
   // var loader = function(data){
