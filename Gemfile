@@ -16,10 +16,10 @@ gem "rack-less"
 gem "rack-sprockets"
 gem "yui-compressor"
 
-group :development do
-  gem "sqlite3"
-  gem "ruby-debug19", :require => "ruby-debug"
-end
+# group :development do
+#   gem "sqlite3"
+#   gem "ruby-debug19", :require => "ruby-debug"
+# end
 
-gem "mysql2"
-gem "thin"
+# gem "mysql2"
+# gem "thin"
