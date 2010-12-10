@@ -58,7 +58,6 @@ GEM
       activemodel (= 3.0.0)
       activesupport (= 3.0.0)
     activesupport (3.0.0)
-    archive-tar-minitar (0.5.2)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     aws-s3 (0.6.2)
@@ -66,25 +65,17 @@ GEM
       mime-types
       xml-simple
     builder (2.1.2)
-    columnize (0.3.1)
-    daemons (1.1.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    eventmachine (0.12.10)
-    ffi (0.6.3)
-      rake (>= 0.8.7)
     i18n (0.4.1)
     juggernaut (2.0.0.beta3)
       redis
-    linecache19 (0.5.11)
-      ruby_core_source (>= 0.1.4)
     mail (2.2.7)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
     mutter (0.5.3)
-    mysql2 (0.2.4)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-less (1.5.0)
@@ -112,23 +103,7 @@ GEM
       thor (~> 0.14.0)
     rake (0.8.7)
     redis (2.0.11)
-    ruby-debug-base19 (0.11.24)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby_core_source (>= 0.1.4)
-    ruby-debug19 (0.11.6)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby-debug-base19 (>= 0.11.19)
-    ruby_core_source (0.1.4)
-      archive-tar-minitar (>= 0.5.2)
     sprockets (1.0.2)
-    sqlite3 (0.1.1)
-      ffi (>= 0.6.3)
-    thin (1.2.7)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
     thor (0.14.3)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
@@ -144,14 +119,10 @@ DEPENDENCIES
   aws-s3
   juggernaut (>= 2.0.0.beta3)
   less!
-  mysql2
   paperclip!
   rack-less
   rack-sprockets
   rails (= 3.0.0)
   redis (>= 2.0.0.rc2)
-  ruby-debug19
-  sqlite3
   supermodel!
-  thin
   yui-compressor
