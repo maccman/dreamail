@@ -147,6 +147,7 @@
   }
   
   .body {
+    position: relative;
     -webkit-user-select: text;
 
     p { 
@@ -180,8 +181,15 @@
 
 #conversations .main .item.edit {
   padding: 0;
-  .vbg-gradient(#E6E6E7, #FAFAFA);
-  background: -webkit-gradient(linear, left top, left bottom, from(#E6E6E7), color-stop(0.3, #FAFAFA));
+  
+  .body {
+    .vbg-gradient(#E6E6E7, #FAFAFA);
+    background: -webkit-gradient(linear, left top, left bottom, from(#E6E6E7), color-stop(0.3, #FAFAFA));
+    
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+  }
   
   .arrow {
     background: url(/images/earrow.png) no-repeat;
@@ -252,7 +260,7 @@
 
 #conversations .main .item .editArea {
   padding: 10px;
-  min-height: 100px;
+  min-height: 30px;
     
   :focus {
     outline: none;

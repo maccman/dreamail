@@ -6,6 +6,7 @@
 * specifying 'to'
 * specifying 'subject'
 * attachments view
+* superlist focus
 
 Look at Facebook's new messaging system - that's the future.
   
@@ -98,4 +99,12 @@ Where are we going to get this from? The same source as Rapportive. Also, how ab
 
 Google Profiles, Gravatar, LinkedIn, Plancast, Rapleaf, Stack Overflow and Twitter,
 
-Bug with down arrow.
+##Script idea
+
+Scripts model:
+
+* name
+* description
+* body
+* user_id
+* approved

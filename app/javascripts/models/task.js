@@ -16,6 +16,14 @@ Task.extend({
   }
 });
 
+Task.include({
+  complete: function(){
+    if (this.completed) return;
+    this.completed = true;
+    this.save();
+  }
+});
+
 Task.beforeSave(function(task){
-  if ($.isBlank(task.name)) throw "Name required";
+  if (jQuery.isBlank(task.name)) throw "Name required";
 });

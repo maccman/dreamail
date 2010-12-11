@@ -1,21 +1,28 @@
 
 ##Detecting state changes
 
-    App.state.change(function(toView){
+    api.change(function(toView){
       
     });
     
 ##Changing state
 
-    App.state.change("conversations", Conversation.first());
-    App.state.change("activities", Activity.first());
-    App.state.change("contacts", Contact.first());
-    App.state.change("tasks", Task.first());
+    api.change("conversations", Conversation.first());
+    api.change("activities", Activity.first());
+    api.change("contacts", Contact.first());
+    api.change("tasks", Task.first());
     
 ##Completing a task
 
+    var task = Task.first();
+    task.complete();
+
 ##Tapping into an email render
 
-    App.state.find("conversations").emails.renderItem(function(email){
+    api.renderEmail(function(e, email){
+      
+    });
+    
+    api.renderAttachment(function(e, attachment){
       
     });

@@ -71,6 +71,7 @@ jQuery(function($){
 //= require <models/task>
 //= require <models/activity>
 //= require <models/conversation>
+//= require <models/attachment>
 
 //= require <states/loading>
 //= require <states/conversations>

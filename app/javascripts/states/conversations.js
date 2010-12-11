@@ -25,12 +25,17 @@ state.setup(function(){
   });
   
   this.editControls.find("[data-type=attachment]").browseElement(function(files){
-    console.log(files)
+    console.log(files);
   });
   
   this.butSend.click(function(){
     console.log('send email');
+    return false;
   });
+  
+  this.editArea.focus(this.proxy(function(){
+    this.editControls.addClass("focus");
+  }));
 });
 
 state.setup(function(){
@@ -43,6 +48,16 @@ state.setup(function(){
   this.list.renderItem(function(e, item){
     $(this).toggleClass("seen", !!item.seen);
   });
+  
+  this.butPrevious.click(this.proxy(function(){
+    this.slist.prev();
+    return false;
+  }));
+  
+  this.butNext.click(this.proxy(function(){
+    this.slist.next();
+    return false;
+  }));
   
   this.slist.render();
 });
