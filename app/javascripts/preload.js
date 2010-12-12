@@ -37,6 +37,16 @@ jQuery(function($){
     });
   Conversation.populate(conversationData);
   
+  var messageData = [];
+  for (var i=0; i < 15; i++)
+    messageData.push({
+      id:       i,
+      from:    "wem" + i + "@example.com",
+      subject: "Conversation " + i,
+      body:    "Lorra Lorra Lorem. Lorra Lorra Lorem."
+    });
+  Message.populate(messageData);
+  
   App.trigger("loaded");
 
   // var loader = function(data){

@@ -46,13 +46,12 @@ state.afterEnter(function(){
   
   this.delay(function(){
     var items = this.slist.binder.allItems();
-    for (var i=0; i < items.length; i++) items[i].hasSeen();
+    for (var i=0; i < items.length; i++) items[i].wasSeen();
   }, 1000);
 });
 
 state.beforeExit(function(){
   this.slist.unfocus();
 });
-
 
 })(jQuery);

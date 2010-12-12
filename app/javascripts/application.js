@@ -51,26 +51,11 @@ App.state.route({
 // not sure if it's that useful
 SuperApp.State.fn.navigate = jQuery.noop;
 
-jQuery(function($){
-  App.state.view = new SuperApp.View($("#views"));
-  App.user_id    = $("meta[name=user-id]").attr("content");
-  
-  App.init();
-    
-  App.on("loaded", function(){
-    App.state.change("loading");
-    
-    if (window.location.hash != "")
-      $(window).trigger("hashchange");
-  });
-  
-  App.state.change("loading");
-});
-
 //= require <models/contact>
 //= require <models/task>
 //= require <models/activity>
 //= require <models/conversation>
+//= require <models/message>
 //= require <models/attachment>
 
 //= require <states/loading>
@@ -81,5 +66,5 @@ jQuery(function($){
 //= require <states/menu>
 
 //= require <api>
-
+//= require <ready>
 //= require <preload>

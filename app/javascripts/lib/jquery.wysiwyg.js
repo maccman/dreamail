@@ -49,12 +49,17 @@
       return element.html();
     };
     
+    var reset = function(){
+      element.empty();
+    };
+    
     return({
       bold:   bold,
       italic: italic,
       list:   list,
       link:   link,
-      val:    val
+      val:    val,
+      reset:  reset
     });
   };
 })(jQuery);

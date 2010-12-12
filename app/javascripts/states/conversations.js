@@ -28,10 +28,14 @@ state.setup(function(){
     console.log(files);
   });
   
-  this.butSend.click(function(){
-    console.log('send email');
+  this.butSend.click(this.proxy(function(){
+    var message = new Message;
+    message.body = controls.val();
+    message.save();
+    
+    controls.reset();
     return false;
-  });
+  }));
   
   this.editArea.focus(this.proxy(function(){
     this.editControls.addClass("focus");
@@ -39,13 +43,21 @@ state.setup(function(){
 });
 
 state.setup(function(){
-  this.slist = this.list.superlist(Conversation);
+  this.messages.renderItem(function(e, item){
+    // TODO - unsafe
+    $(this).find(".body").html(item.body);
+  });
+
+  this.binder = this.messages.connect(Message, {prepend: true});
+  this.binder.filter = this.proxy(function(item){
+    return(this.current && this.current.hasMessage(item));
+  });  
+});
+
+state.setup(function(){
+  this.slist = this.conversations.superlist(Conversation);
   
-  this.slist.change(this.proxy(function(item){
-    this.app.change("conversations", item);
-  }));
-  
-  this.list.renderItem(function(e, item){
+  this.conversations.renderItem(function(e, item){
     $(this).toggleClass("seen", !!item.seen);
   });
   
@@ -59,6 +71,12 @@ state.setup(function(){
     return false;
   }));
   
+  // Needs to be added last, as otherwise beforeEnter could
+  // be called before state has been properly setup
+  this.slist.change(this.proxy(function(item){
+    this.app.change("conversations", item);
+  }));
+  
   this.slist.render();
 });
 
@@ -66,10 +84,11 @@ state.beforeEnter(function(current){
   if ( !current ) return;
   
   this.current = current;
+  this.binder.render();
   
   this.delay(function(){
     if (this.current == current)
-      this.current.hasSeen();
+      this.current.wasSeen();
   }, 100);
 });
 

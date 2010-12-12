@@ -24,10 +24,14 @@ Conversation.on("save populate", function(){
 });
 
 Conversation.include({
-  hasSeen: function(){
+  wasSeen: function(){
     if (this.seen) return;
     
     this.seen = true;
     this.save();
-  }
+  },
+  
+  hasMessage: function(msg){
+    return true;
+  },
 });

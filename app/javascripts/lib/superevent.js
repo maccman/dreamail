@@ -17,15 +17,16 @@ var SuperEvent = {
   trigger: function(names){    
     var args  = jQuery.makeArray(arguments);  
     var names = args.shift().split(" ");
-    
+        
     for (var i=0; i < names.length; i++)
       if (this.triggerEvent(names[i], args) === false) return false;
   },
   
   triggerEvent: function(name, args){
     if ( !this.handlers ) return;
-    
+        
     var callbacks = this.handlers[name];
+        
     if ( !callbacks ) return;
     
     for(var i=0, len = callbacks.length; i < len; i++)
@@ -37,7 +38,7 @@ var SuperEvent = {
     jQuery.each(events, this.proxy(function(i, name){
       this[name] = function(){
         var args = jQuery.makeArray(arguments);
-
+        
         if (typeof args[0] == "function") {
           args.unshift(name);
           this.on.apply(this, args);

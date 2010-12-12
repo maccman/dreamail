@@ -6,7 +6,7 @@ var Activity = SuperModel.setup("Activity");
 Activity.attributes = ["from", "subject", "seen"];
 
 Activity.include({
-  hasSeen: function(){
+  wasSeen: function(){
     if (this.seen) return;
     
     this.seen = true;

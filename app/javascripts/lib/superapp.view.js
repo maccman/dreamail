@@ -67,8 +67,8 @@ if (typeof SuperApp != "undefined") {
   
   SuperApp.State.include({
     init: function(){
-      jQuery(this.proxy(this.loadView));
       oldStateInit.apply(this, arguments);
+      this.setup(this.loadView);
     },
     
     loadView: function(){
