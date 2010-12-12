@@ -69,4 +69,6 @@ Dreamail::Application.routes.draw do
   end
   
   resources :tasks
+  
+  root :to => "app#index"
 end
