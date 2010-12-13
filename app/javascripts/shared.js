@@ -31,6 +31,10 @@
     return(i == 0);
   };
   
+  $.includes = function(array, item){
+    return(array && array.indexOf(item) != -1);
+  };
+  
   $.confirm = function(html, callback){
     var confirm = $("<div></div>")
   		.html(html)

@@ -31,6 +31,7 @@ state.setup(function(){
   this.butSend.click(this.proxy(function(){
     var message = new Message;
     message.body = controls.val();
+    message.setConversation(this.current);
     message.save();
     
     controls.reset();
@@ -51,7 +52,8 @@ state.setup(function(){
   this.binder = this.messages.connect(Message, {prepend: true});
   this.binder.filter = this.proxy(function(item){
     return(this.current && this.current.hasMessage(item));
-  });  
+  });
+  this.binder.sort = function(a, b){ return 1 };
 });
 
 state.setup(function(){

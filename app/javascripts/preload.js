@@ -28,17 +28,8 @@ jQuery(function($){
     });
   Activity.populate(activityData);
   
-  var conversationData = [];
-  for (var i=0; i < 15; i++)
-    conversationData.push({
-      id:       i,
-      subject: "Conversation " + i,
-      body:    "Lorra Lorra Lorem. Lorra Lorra Lorem."
-    });
-  Conversation.populate(conversationData);
-  
   var messageData = [];
-  for (var i=0; i < 15; i++)
+  for (var i=0; i < 30; i++)
     messageData.push({
       id:       i,
       from:    "wem" + i + "@example.com",
@@ -46,6 +37,16 @@ jQuery(function($){
       body:    "Lorra Lorra Lorem. Lorra Lorra Lorem."
     });
   Message.populate(messageData);
+  
+  var conversationData = [];
+  for (var i=0; i < 15; i++)
+    conversationData.push({
+      id:       i,
+      subject: "Conversation " + i,
+      body:    "Lorra Lorra Lorem. Lorra Lorra Lorem.",
+      message_ids: [messageData[i].id, messageData[i + 1].id]
+    });
+  Conversation.populate(conversationData);
   
   App.trigger("loaded");
 

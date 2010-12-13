@@ -151,6 +151,8 @@ SuperModel.include({
   },
   
   save: function(){
+    if (this.validate() == false) return false;
+    
     this.trigger("beforeSave");
     this.isNew() ? this.create() : this.update();
     this.trigger("afterSave");
@@ -204,6 +206,8 @@ SuperModel.include({
     return(rec && rec.id == this.id && 
            rec._class.className == this._class.className);
   },
+  
+  validate: function(){ },
   
   // Private
   
