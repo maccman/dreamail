@@ -53,7 +53,6 @@ state.setup(function(){
   this.binder.filter = this.proxy(function(item){
     return(this.current && this.current.hasMessage(item));
   });
-  this.binder.sort = function(a, b){ return 1 };
 });
 
 state.setup(function(){
@@ -86,7 +85,7 @@ state.beforeEnter(function(current){
   if ( !current ) return;
   
   this.current = current;
-  this.binder.render();
+  this.binder.render(this.current.getMessages());
   
   this.delay(function(){
     if (this.current == current)

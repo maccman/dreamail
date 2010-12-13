@@ -34,6 +34,12 @@ Conversation.include({
     return jQuery.includes(this.message_ids, msg.id);
   },
   
+  getMessages: function(){
+    return jQuery.map(this.message_ids, function(id){
+      return Message.exists(id);
+    }).reverse();
+  },
+  
   addMessage: function(item){
     if ( !this.message_ids )
       this.message_ids = [];

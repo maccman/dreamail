@@ -115,7 +115,7 @@
   .box-shadow(0px, 1px, 3px, #7F7F7F);  
   .border-radius(5px);
   
-  img {
+  .avatar {
     position: absolute;
     top: 0;
     left: -65px;
@@ -167,7 +167,7 @@
 }
 
 #conversations .main .item.right {
-  img {
+  .avatar {
     left: auto;
     right: -65px;
   }
@@ -213,6 +213,8 @@
   font-weight: bold;
   
   -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
   
   li {
     float: left;
@@ -264,6 +266,27 @@
     
   :focus {
     outline: none;
+  }
+}
+
+#conversations .main .item .attachments {
+  overflow: hidden;
+  padding: 14px;
+  border-top: 1px solid #CDCDCC;
+  background: #FFF;
+  
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  
+  img {
+    max-width: 100px;
+    height: 60px;
+    float: left;
+
+    margin: 0 14px 0 0;
+    .border-radius(5px);
+    .box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.3));
   }
 }
 

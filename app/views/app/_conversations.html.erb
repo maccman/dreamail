@@ -31,7 +31,7 @@
     
   <div class="emails">
     <div class="item edit">
-      <%= image_tag "missing.png" %>
+      <%= image_tag "missing.png", :class => "avatar" %>
       <div class="arrow"></div>
       <ul class="editControls" data-name="editControls">
         <li><a href="#" data-type="bold">Bold</a></li>
@@ -47,12 +47,17 @@
       <div class="body">
         <div class="editArea" data-name="editArea" tabindex="1">
         </div>
+        
+        <div class="attachments">
+          <img src="/images/attachment.png" title="Screen Shot 1.png">
+          <img src="/images/attachment.png" title="Screen Shot 2.png">
+        </div>
       </div>
     </div>
     
     <div data-name="messages">
       <div class="item">
-        <%= image_tag "missing.png" %>
+        <%= image_tag "missing.png", :class => "avatar" %>
         <div class="arrow"></div>
         <div class="body"></div>
         <div class="timestamp">7:42 pm</div>
