@@ -1,30 +1,23 @@
 (function($){
   function dragEnter(e) {
-    $(e.target).addClass("dragOver");
-    e.stopPropagation();
+    $(this).addClass("dragOver");
     e.preventDefault();
-    return false;
   };
   
-  function dragOver(e) {
-    // dropEffect needs to be set twice
+  function dragOver(e) {    
     e.originalEvent.dataTransfer.dropEffect = "copy";
-    e.stopPropagation();
     e.preventDefault();
-    return false;    
   };
   
-  function dragLeave(e) {
-    $(e.target).removeClass("dragOver");
-    e.stopPropagation();
+  function dragLeave(e) {    
+    $(this).removeClass("dragOver");
     e.preventDefault();
-    return false;
   };
       
   $.fn.dropArea = function(){
-    this.bind("dragenter", dragEnter).
-         bind("dragover",  dragOver).
-         bind("dragleave", dragLeave);
+    $(this).bind("dragenter", dragEnter).
+            bind("dragover",  dragOver).
+            bind("dragleave", dragLeave);
     return this;
   };
   

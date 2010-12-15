@@ -20,14 +20,23 @@
 <div class="vdivide"></div>
 
 <div class="main">
-  <ul class="options">
-    <li>Archive</li>
+  <div class="options">
+    <ul>
+      <li>Archive</li>
+      <li class="drop">
+        Convert...
+        <ul>
+          <li>To Task</li>
+          <li>To Activity</li>
+        </ul>
+      </li>
     
-    <div class="right">
-      <li data-name="butPrevious">Previous</li>
-      <li data-name="butNext">Next</li>
-    </div>
-  </ul>
+      <div class="right">
+        <li data-name="butPrevious">Previous</li>
+        <li data-name="butNext">Next</li>
+      </div>
+    </ul>
+  </div>
     
   <div class="emails">
     <div class="item edit">
@@ -48,9 +57,7 @@
         <div class="editArea" data-name="editArea" tabindex="1">
         </div>
         
-        <div class="attachments">
-          <img src="/images/attachment.png" title="Screen Shot 1.png">
-          <img src="/images/attachment.png" title="Screen Shot 2.png">
+        <div class="attachments" data-name="editAttachments">
         </div>
       </div>
     </div>
@@ -61,6 +68,7 @@
         <div class="arrow"></div>
         <div class="body"></div>
         <div class="timestamp">7:42 pm</div>
+        <div class="attachments"></div>
       </div>
     </div>
   </div>

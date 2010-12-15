@@ -1,11 +1,19 @@
-//= require <jquery.wysiwyg>
-//= require <jquery.browse>
-
 (function($){
 
 var state = App.state.add("conversations");
 state.hasView = true;
 
+state.beforeEnter(function(current){
+  if ( !current ) return;
+  this.current = current;
+});
+
+// Required states that need to be loaded
+// before the SuperList is setup
+//= require <states/conversations.emails>
+//= require <states/conversations.editor>
+
+// Unseen count
 state.load(function(){
   Conversation.on("unseenCount", function(count){
     var element = $("#title li[data-name=conversations] span");
@@ -14,47 +22,7 @@ state.load(function(){
   Conversation.trigger("unseenCount", 0);
 });
 
-state.setup(function(){
-  var controls = this.editArea.wysiwyg();
-  
-  controls.attachment = $.noop;
-  
-  this.editControls.delegate("[data-type]", "click", function(){
-    controls[$(this).attr("data-type")]();
-    return false;
-  });
-  
-  this.editControls.find("[data-type=attachment]").browseElement(function(files){
-    console.log(files);
-  });
-  
-  this.butSend.click(this.proxy(function(){
-    var message = new Message;
-    message.body = controls.val();
-    message.setConversation(this.current);
-    message.save();
-    
-    controls.reset();
-    return false;
-  }));
-  
-  this.editArea.focus(this.proxy(function(){
-    this.editControls.addClass("focus");
-  }));
-});
-
-state.setup(function(){
-  this.messages.renderItem(function(e, item){
-    // TODO - unsafe
-    $(this).find(".body").html(item.body);
-  });
-
-  this.binder = this.messages.connect(Message, {prepend: true});
-  this.binder.filter = this.proxy(function(item){
-    return(this.current && this.current.hasMessage(item));
-  });
-});
-
+// Conversations
 state.setup(function(){
   this.slist = this.conversations.superlist(Conversation);
   
@@ -81,18 +49,17 @@ state.setup(function(){
   this.slist.render();
 });
 
+// Conversation seen
 state.beforeEnter(function(current){
-  if ( !current ) return;
-  
-  this.current = current;
-  this.binder.render(this.current.getMessages());
-  
+  // Make sure we're not quickly skipping
+  // between conversations
   this.delay(function(){
     if (this.current == current)
       this.current.wasSeen();
   }, 100);
 });
 
+// Navigation
 state.beforeEnter(function(current){
   if ( !current || current.eql(this.current) ) return;
   this.navigate("/messages", current.id);

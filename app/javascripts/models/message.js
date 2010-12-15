@@ -5,6 +5,7 @@ var Message = SuperModel.setup("Message");
 Message.attributes = ["subject", "from", "body"];
 
 Message.belongsTo("conversation");
+Message.hasMany("attachments");
 Message.include(SuperModel.GUID);
 
 Message.afterCreate(function(item){
@@ -17,4 +18,4 @@ Message.include({
     if ( !this.body ) return false;
     if ( this.body == "" ) return false;
   }
-})
+});
